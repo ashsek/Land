@@ -1,0 +1,23 @@
+{
+    "name": "registery",
+    "version": "1.0.0",
+    "description": "Basic Land registery system",
+    "main": "registery.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "fabric-ca-client": "~1.1.0",
+        "fabric-client": "~1.1.0",
+        "grpc": "^1.6.0"
+    },
+    "author": "Ashwin",
+    "license": "Apache-2.0",
+    "keywords": [
+        "Hyperledger",
+        "Fabric",
+        "Car",
+        "Sample",
+        "Application"
+    ]
+}
