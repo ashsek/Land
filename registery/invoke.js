@@ -62,7 +62,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 		//targets: let default to the peer assigned to the client
 		chaincodeId: 'registery',
 		fcn: 'addHash',
-		args: ['07', '8b1a9953c4611296a827abf8c47804d7'],
+		args: ["07", "8b1a9953c4611296a827abf8c47804d7"],
 		chainId: 'mychannel',
 		txId: tx_id
 	};
@@ -112,7 +112,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 			let handle = setTimeout(() => {
 				event_hub.disconnect();
 				resolve({event_status : 'TIMEOUT'}); //we could use reject(new Error('Trnasaction did not complete within 30 seconds'));
-			}, 3000);
+			}, 30000000);
 			event_hub.connect();
 			event_hub.registerTxEvent(transaction_id_string, (tx, code) => {
 				// this is the callback for transaction event status
