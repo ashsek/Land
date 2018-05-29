@@ -22,6 +22,7 @@ type SmartContract struct {
 type R_Hash struct {
 	Hash  string `json:"hash"`
 	District string `json:"district"`
+	TimeCommit string `json: "Timecommit"`
 }
 
 /*
@@ -68,12 +69,7 @@ func (s *SmartContract) queryHash(APIstub shim.ChaincodeStubInterface, args []st
 
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
 	Hashes := []R_Hash{
-		R_Hash{District: "01",	Hash: "7cb6fa91c124913f7a75e3153339234f"},
-		R_Hash{District: "02",	Hash: "a2a551a6458a8de22446cc76d639a9e9"},
-		R_Hash{District: "03",	Hash: "0cc175b9c0f1b6a831c399e269772661"},
-		R_Hash{District: "04",	Hash: "f016441d00c16c9b912d05e9d81d894d"},
-		R_Hash{District: "05",	Hash: "755f85c2723bb39381c7379a604160d8"},
-		R_Hash{District: "06",	Hash: "1a699ad5e06aa8a6db3bcf9cfb2f00f2"},
+		R_Hash{District: "01",	Hash: "7cb6fa91c124913f7a75e3153339234f", TimeCommit: "Sample Time"},
 	}
 
 	i := 0
@@ -90,11 +86,11 @@ func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Respo
 
 func (s *SmartContract) addHash(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 2 {
+	if len(args) != 4 {
 		return shim.Error("Incorrect number of arguments. Expecting 2")
 	}
 
-	var hash = R_Hash{District: args[1], Hash: args[2]}
+	var hash = R_Hash{District: args[1], Hash: args[2], TimeCommit: args[3]}
 
 	hashAsBytes, _ := json.Marshal(hash)
 	APIstub.PutState(args[0], hashAsBytes)

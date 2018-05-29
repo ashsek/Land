@@ -58,11 +58,40 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	// createHash chaincode function - requires 2 args, ex: args: ['09', '3702ykdljfhisru30849284ru9er'],
 	// changeHash chaincode function - requires 2 args , ex: args: ['08', 'qlknjwejvhjoeiuy233924038594'],
 	// must send the proposal to endorsing peers
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	var hrs = today.getHours();
+    var mins = today.getMinutes();
+    var secs = today.getSeconds();
+
+	if(dd<10) {
+    	dd = '0'+dd
+	} 
+
+	if(mm<10) {
+    	mm = '0'+mm
+	}
+	if(hrs<10) {
+    	hrs = '0'+hrs
+	} 
+
+	if(mins<10) {
+    	mins = '0'+mins
+	}
+
+	if(secs<10) {
+		secs = '0'+secs
+	}
+
+
+	today = dd + '/' + mm + '/' + yyyy + ' ' + hrs + ':' + mins + ':' + secs;
 	var request = {
 		//targets: let default to the peer assigned to the client
 		chaincodeId: 'registery',
 		fcn: 'addHash',
-		args: ["07", "8b1a9953c4611296a827abf8c47804d7"],
+		args: ['R_Hash2', '08', 'e07e8e6e51bc6d169070b5cb468ca200',today],
 		chainId: 'mychannel',
 		txId: tx_id
 	};
