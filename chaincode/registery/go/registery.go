@@ -143,7 +143,7 @@ func (s *SmartContract) queryAllHashes(APIstub shim.ChaincodeStubInterface) sc.R
 
 func (s *SmartContract) changeHash(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 2 {
+	if len(args) != 3 {
 		return shim.Error("Incorrect number of arguments. Expecting 2")
 	}
 
@@ -151,7 +151,8 @@ func (s *SmartContract) changeHash(APIstub shim.ChaincodeStubInterface, args []s
 	hash := R_Hash{}
 
 	json.Unmarshal(hashAsBytes, &hash)
-	hash.District = args[1]
+	hash.Hash = args[1]
+	hash.TimeCommit = args[2]
 
 	hashAsBytes, _ = json.Marshal(hash)
 	APIstub.PutState(args[0], hashAsBytes)

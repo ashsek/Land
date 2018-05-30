@@ -90,8 +90,8 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	var request = {
 		//targets: let default to the peer assigned to the client
 		chaincodeId: 'registery',
-		fcn: 'changeHash',
-        args: ["R_Hash0","4fded1464736e77865df232cbcb4cd19",today],
+		fcn: 'addHash',
+        args: ["R_Hash2", "08", "test1234",today],
 		chainId: 'mychannel',
 		txId: tx_id
 	};
